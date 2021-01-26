@@ -21,10 +21,18 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/************/
+/* COMMANDS */
+/************/
+
 /* volume control */
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "1", "toggle", NULL };
+
+static const char *powerman[] = { "rofi_run", "-l", NULL };
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -67,7 +75,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-i", "-c", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-i", "-c", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "/home/pypaut/.scripts/dmenu.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
@@ -104,12 +113,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = powerman} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
     /* sound control */
-    { 0,            XF86XK_AudioLowerVolume, spawn, {.v = downvol} },
-    { 0,            XF86XK_AudioMute,        spawn, {.v = mutevol} },
-    { 0,            XF86XK_AudioRaiseVolume, spawn, {.v = upvol} },
+    { 0,            XF86XK_AudioLowerVolume,    spawn, {.v = downvol} },
+    { 0,            XF86XK_AudioRaiseVolume,    spawn, {.v = upvol} },
+    { 0,            XF86XK_AudioMute,           spawn, {.v = mutevol} },
+    { 0,            XF86XK_AudioMicMute,        spawn, {.v = mutemic} },
 };
 
 /* button definitions */
