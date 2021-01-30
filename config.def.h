@@ -109,7 +109,7 @@ static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "1", "togg
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenudesktopcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = filecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -145,7 +145,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_0,                      9)
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = powerman} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,           {.v = dmenudesktopcmd} },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,           {.v = dmenucmd} },
     /* sound control */
     { 0,            XF86XK_AudioLowerVolume,    spawn, {.v = downvol} },
     { 0,            XF86XK_AudioRaiseVolume,    spawn, {.v = upvol} },
