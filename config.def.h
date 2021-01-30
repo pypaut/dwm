@@ -73,6 +73,7 @@ static const char *dmenucmd[] = { "/home/pypaut/.scripts/dmenu.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *dmenudesktopcmd[] = { "/home/pypaut/.scripts/j4-dmenu-desktop.sh", NULL };
 static const char *powerman[] = { "rofi_run", "-l", NULL };
+static const char *filecmd[] = { "thunar", NULL };
 
 /* volume */
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -84,6 +85,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = filecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
