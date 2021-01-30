@@ -7,18 +7,44 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka Nerd Font Mono:style=Medium:size=10" };
 static const char dmenufont[]       = "Iosevka Nerd Font Mono:style=Medium:size=10";
-static const char col_gray1[]       = "#2e3440";  /* tag tabs color */
+
+/**********/
+/* COLORS */
+/**********/
+
+/* Polar Night */
+static const char nord0[]  = "#2e3440";
+static const char nord1[]  = "#3b4252";
+static const char nord2[]  = "#434c5e";
+static const char nord3[]  = "#4c566a";
+/* Snow Storm */
+static const char nord4[]  = "#d8dee9";
+static const char nord5[]  = "#e5e9f0";
+static const char nord6[]  = "#eceff4";
+/* Frost */
+static const char nord7[]  = "#8fbcbb";
+static const char nord8[]  = "#88c0d0";
+static const char nord9[]  = "#81a1c1";
+static const char nord10[] = "#5e81ac";
+/* Aurora */
+static const char nord11[] = "#bf616a";  /* Red */
+static const char nord12[] = "#d08770";  /* Orange */
+static const char nord13[] = "#ebcb8b";  /* Yellow */
+static const char nord14[] = "#a3be8c";  /* Green */
+static const char nord15[] = "#b48ead";  /* Purple */
+
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#4c566a";  /* bar main color */
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray3, nord0, col_gray2 },
+	[SchemeSel]  = { col_gray4, nord3,  nord10 },
 };
 
 
@@ -33,10 +59,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       1 << 1,            0,           -1 },
+	//{ "Gimp",     NULL,       NULL,       1 << 1,            0,           -1 },
 //	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Lutris",  NULL,       NULL,       1 << 3,       1,           -1 },
-	{ "Steam",  NULL,       NULL,       1 << 3,       1,           -1 },
+	//{ "Lutris",  NULL,       NULL,       1 << 3,       1,           -1 },
+	//{ "Steam",  NULL,       NULL,       1 << 3,       1,           -1 },
 	{ "st",  NULL,       NULL,       0,       1,           -1 },
 };
 
