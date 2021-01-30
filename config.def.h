@@ -21,21 +21,11 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
-/************/
-/* COMMANDS */
-/************/
 
-/* volume control */
-static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "1", "toggle", NULL };
-
-static const char *powerman[] = { "rofi_run", "-l", NULL };
 
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -73,11 +63,22 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
+
+/************/
+/* COMMANDS */
+/************/
+
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-i", "-c", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "/home/pypaut/.scripts/dmenu.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *dmenudesktopcmd[] = { "/home/pypaut/.scripts/j4-dmenu-desktop.sh", NULL };
+static const char *powerman[] = { "rofi_run", "-l", NULL };
+
+/* volume */
+static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "1", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -96,9 +97,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	// { MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+// 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
@@ -113,8 +114,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+	TAGKEYS(                        XK_0,                      9)
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = powerman} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,           {.v = dmenudesktopcmd} },
     /* sound control */
     { 0,            XF86XK_AudioLowerVolume,    spawn, {.v = downvol} },
     { 0,            XF86XK_AudioRaiseVolume,    spawn, {.v = upvol} },
