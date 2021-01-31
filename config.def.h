@@ -101,6 +101,8 @@ static const char *dmenudesktopcmd[]    = { "/home/pypaut/.scripts/j4-dmenu-desk
 static const char *powerman[]           = { "rofi_run", "-l", NULL };
 static const char *filecmd[]            = { "thunar", NULL };
 static const char *browsercmd[]         = { "librewolf", NULL };
+static const char *lockcmd[]             = { "/home/pypaut/.scripts/i3lock.sh", NULL };
+static const char *scrotcmd[]             = { "/home/pypaut/.scripts/scrot.sh", NULL };
 
 /* volume */
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -148,6 +150,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = powerman} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,           {.v = dmenucmd} },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,           {.v = lockcmd} },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,           {.v = scrotcmd} },
     /* sound control */
     { 0,            XF86XK_AudioLowerVolume,    spawn, {.v = downvol} },
     { 0,            XF86XK_AudioRaiseVolume,    spawn, {.v = upvol} },
