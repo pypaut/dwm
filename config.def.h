@@ -11,6 +11,11 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka:style=Medium:size=10" };
 static const char dmenufont[]       = "Iosevka Nerd Font Mono:style=Medium:size=10";
 
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;     /* 0 means no systray */
+
 /**********/
 /* COLORS */
 /**********/
