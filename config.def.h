@@ -106,6 +106,8 @@ static const char *filescreenshotscmd[] = {
 };
 static const char *lockcmd[]            = { "/home/geoffrey/.scripts/i3lock.sh", NULL };
 static const char *scrotcmd[]           = { "/home/geoffrey/.scripts/scrot.sh", NULL };
+static const char *monitorcmd[]         = { "/home/geoffrey/.scripts/monitor.sh", NULL };
+static const char *battcheckcmd[]       = { "/home/geoffrey/.scripts/disenablebattcheck.sh", NULL };
 
 /* volume */
 static const char *upvol[]   = { "/home/geoffrey/.scripts/sound.sh", "inc", NULL };
@@ -154,6 +156,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_d,      spawn,           {.v = dmenucmd} },
 	{ MODKEY|ShiftMask, XK_x,      spawn,           {.v = lockcmd} },
 	{ MODKEY|ShiftMask, XK_s,      spawn,           {.v = scrotcmd} },
+	{ MODKEY|ShiftMask, XK_p,      spawn,           {.v = monitorcmd} },
+	{ MODKEY|ShiftMask, XK_c,      spawn,           {.v = battcheckcmd} },
     /* sound control */
     { 0, XF86XK_AudioLowerVolume, spawn, {.v = downvol} },
     { 0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol} },
