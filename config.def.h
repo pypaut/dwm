@@ -161,10 +161,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_p,      spawn,           {.v = monitorcmd} },
 	{ MODKEY|ShiftMask, XK_c,      spawn,           {.v = battcheckcmd} },
     /* sound control */
-    { 0, XF86XK_AudioLowerVolume, spawn, {.v = downvol} },
-    { 0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol} },
-    { 0, XF86XK_AudioMute,        spawn, {.v = mutevol} },
-    { 0, XF86XK_AudioMicMute,     spawn, {.v = mutemic} },
+    { 0,        XF86XK_AudioLowerVolume,    spawn, {.v = downvol} },
+    { 0,        XF86XK_AudioRaiseVolume,    spawn, {.v = upvol} },
+    { 0,        XF86XK_AudioMute,           spawn, {.v = mutevol} },
+    { 0,        XF86XK_AudioMicMute,        spawn, {.v = mutemic} },
+    { Mod1Mask, XK_z,                       spawn, {.v = mutemic} },
 };
 
 /* button definitions */
